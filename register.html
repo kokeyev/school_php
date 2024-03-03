@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <form id="registrationForm" method="post" action="register.php" onsubmit="return isPasswordStrong()">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+    <label for="name">Your name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <button type="submit" name="register_button">Register</button>
+    <a href="login.php"><button type="button" name="hava_an_account" style="background-color: #1ABC9C;">Have an
+        account</button></a>
+  </form>
+
+
+  <script>
+    function submitForm() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+
+      console.log("Email:", email);
+      console.log("Password:", password);
+    }
+
+    function isPasswordStrong() {
+      var password = document.getElementById("password").value;
+      var strong = true;
+
+      // Check password length
+      if (password.length < 8) {
+        strong = false;
+        alert("Make the password longer. ");
+
+      }
+
+
+
+      // Check for mixed case
+      if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
+
+      } else {
+        strong = false;
+        alert("Use both lowercase and uppercase letters. ");
+      }
+
+
+
+      // Check for numbers
+      if (password.match(/\d/)) {
+      } else {
+        strong = false;
+        alert("Include at least one number. ");
+
+      }
+
+
+
+
+      if (password.match(/[^a-zA-Z\d]/)) {
+
+      } else {
+        strong = false;
+        alert("Include at least one special character. ");
+
+      }
+
+      return strong;
+
+
+    }
+
+  </script>
+
+</body>
+
+</html>
